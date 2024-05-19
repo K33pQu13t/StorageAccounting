@@ -4,15 +4,73 @@ using StorageAccounting.Common.Configurations;
 using StorageAccounting.Domain.Configurations.Common;
 using StorageAccounting.Domain.Configurations.Item;
 using StorageAccounting.Domain.Configurations.StorageAccounting;
+using StorageAccounting.Domain.Models.Common;
+using StorageAccounting.Domain.Models.Item;
+using StorageAccounting.Domain.Models.Storage;
 
 namespace StorageAccounting.Domain.Contexts;
 public class StorageAccountingContext : DbContext
 {
     private readonly DbConnection _dbConnectionConfig;
 
+    public virtual DbSet<DocumentType> DocumentTypes { get; set; }
+
+    public virtual DbSet<Mark> Marks { get; set; }
+
+    public virtual DbSet<OperationDocumentType> OperationDocumentTypes { get; set; }
+
+    public virtual DbSet<OperationType> OperationTypes { get; set; }
+
+    public virtual DbSet<Partner> Partners { get; set; }
+
+    public virtual DbSet<PartnerType> PartnerTypes { get; set; }
+
+    public virtual DbSet<Place> Place { get; set; }
+
+    public virtual DbSet<PlaceType> PlaceTypes { get; set; }
+
+    public virtual DbSet<ProductType> ProductTypes { get; set; }
+
+    public virtual DbSet<ProductTypeMark> ProductTypeMarks { get; set; }
+
+    public virtual DbSet<State> States { get; set; }
+
+    public virtual DbSet<Unit> Units { get; set; }
+
+    public virtual DbSet<Document> Documents { get; set; }
+
+    public virtual DbSet<Item> Items { get; set; }
+
+    public virtual DbSet<Move> Moves { get; set; }
+
+    public virtual DbSet<MoveRegistry> MoveRegistries { get; set; }
+
+    public virtual DbSet<Operation> Operations { get; set; }
+
+    public virtual DbSet<Position> Positions { get; set; }
+
+    public virtual DbSet<Rest> Rests { get; set; }
+
+    public virtual DbSet<Arrival> Arrivals { get; set; }
+
+    public virtual DbSet<ArrivalRow> ArrivalRows { get; set; }
+
+    public virtual DbSet<Invoice> Invoices { get; set; }
+
+    public virtual DbSet<InvoiceRow> InvoiceRows { get; set; }
+
+    public virtual DbSet<Shipment> Shipments { get; set; }
+
+    public virtual DbSet<ShipmentRow> ShipmentRows { get; set; }
+
+    public virtual DbSet<Transfer> Transfers { get; set; }
+
+    public virtual DbSet<TransferRow> TransferRows { get; set; }
+
     public StorageAccountingContext(IOptionsMonitor<DbConnection> dbConnectionMonitor)
     {
         _dbConnectionConfig = dbConnectionMonitor.CurrentValue;
+        Database.EnsureCreated();
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

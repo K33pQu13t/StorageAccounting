@@ -9,7 +9,7 @@ internal class ShipmentConfiguration : IEntityTypeConfiguration<Shipment>
     public void Configure(EntityTypeBuilder<Shipment> builder)
     {
         builder
-            .ToTable(schema: "STORAGE", name: "ARRIVAL")
+            .ToTable(schema: "STORAGE", name: "SHIPMENT")
             .ToTable(t =>
             {
                 t.HasComment("Документ отгрузки наружу");

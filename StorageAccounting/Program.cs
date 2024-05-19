@@ -1,3 +1,6 @@
+using StorageAccounting.Application.Interfaces.Services.Arrival;
+using StorageAccounting.Application.Profiles;
+using StorageAccounting.Application.Services.Arrival;
 using StorageAccounting.Common.Configurations;
 using StorageAccounting.Domain.Contexts;
 
@@ -12,6 +15,10 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.Configure<DbConnection>(builder.Configuration.GetSection(nameof(DbConnection)));
 builder.Services.AddDbContext<StorageAccountingContext>();
+
+builder.Services.AddScoped<IArrivalService, ArrivalService>();
+
+builder.Services.AddAutoMapper(typeof(ApplicationProfile));
 
 var app = builder.Build();
 

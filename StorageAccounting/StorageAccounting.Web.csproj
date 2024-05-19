@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StorageAccounting.Application\StorageAccounting.Application.csproj" />
     <ProjectReference Include="..\StorageAccounting.Common\StorageAccounting.Common.csproj" />
     <ProjectReference Include="..\StorageAccounting.DAL\StorageAccounting.Domain.csproj" />
   </ItemGroup>
