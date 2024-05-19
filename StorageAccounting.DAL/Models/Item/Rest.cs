@@ -4,7 +4,7 @@ namespace StorageAccounting.Domain.Models.Item;
 
 public class Rest
 {
-    public long Id { get; set; }
+    public double Id { get; set; }
 
     public int PlaceId { get; set; }
 
@@ -12,9 +12,9 @@ public class Rest
 
     public DateTime DateCreate { get; set; }
 
-    public int Amount { get; set; }
+    public decimal Amount { get; set; }
 
-    public int AmountPlan { get; set; }
+    public decimal AmountPlan { get; set; }
 
     public Place Place { get; set; } = null!;
 

@@ -2,19 +2,19 @@
 
 public class Move
 {
-    public long Id { get; set; }
+    public double Id { get; set; }
 
-    public long PositionId { get; set; }
+    public double PositionId { get; set; }
 
     public DateTime DateCreate { get; set; }
 
     public short Direction { get; set; }
 
-    public int Amount { get; set; }
+    public decimal Amount { get; set; }
 
-    public int AmountPlan { get; set; }
+    public decimal AmountPlan { get; set; }
 
-    public long OperationId { get; set; }
+    public double OperationId { get; set; }
 
     public virtual Position Position { get; set; } = null!;
 

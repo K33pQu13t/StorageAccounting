@@ -1,10 +1,11 @@
 ﻿using StorageAccounting.Domain.Models.Common;
+using StorageAccounting.Domain.Models.Storage;
 
 namespace StorageAccounting.Domain.Models.Item;
 
 public class Document
 {
-    public long Id { get; set; }
+    public double Id { get; set; }
 
     public int DocumentTypeId { get; set; }
 
@@ -27,4 +28,12 @@ public class Document
     public virtual ICollection<Position> Positions { get; set; }
 
     public virtual ICollection<Operation> Operations { get; set; }
+
+    public virtual ICollection<Invoice> Invoices { get; set; }
+
+    public virtual ICollection<Arrival> Arrivals { get; set; }
+
+    public virtual ICollection<Shipment> Shipments { get; set; }
+
+    public virtual ICollection<Transfer> Transfers { get; set; }
 }

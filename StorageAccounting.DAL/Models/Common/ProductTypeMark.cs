@@ -1,7 +1,7 @@
 ﻿namespace StorageAccounting.Domain.Models.Common;
 public class ProductTypeMark
 {
-    public long Id { get; set; }
+    public double Id { get; set; }
 
     public int ProductTypeId { get; set; }
     

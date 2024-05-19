@@ -4,7 +4,7 @@ namespace StorageAccounting.Domain.Models.Item;
 
 public class Item
 {
-    public long Id { get; set; }
+    public double Id { get; set; }
 
     public int ProductTypeId { get; set; }
 
@@ -12,7 +12,7 @@ public class Item
 
     public int PlaceId { get; set; }
 
-    public int Amount { get; set; }
+    public decimal Amount { get; set; }
 
     public virtual ProductType ProductType { get; set; } = null!;
 
