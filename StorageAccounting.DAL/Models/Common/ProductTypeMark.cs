@@ -1,4 +1,4 @@
-﻿namespace StorageAccounting.DAL.Models.Common;
+﻿namespace StorageAccounting.Domain.Models.Common;
 public class ProductTypeMark
 {
     public long Id { get; set; }

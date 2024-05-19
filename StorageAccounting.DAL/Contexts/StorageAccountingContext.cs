@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StorageAccounting.DAL.Configurations.Common;
-using StorageAccounting.DAL.Configurations.Item;
+using StorageAccounting.Domain.Configurations.Common;
+using StorageAccounting.Domain.Configurations.Item;
 
-namespace StorageAccounting.DAL.Contexts;
+namespace StorageAccounting.Domain.Contexts;
 public class StorageAccountingContext : DbContext
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)

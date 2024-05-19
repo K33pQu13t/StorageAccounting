@@ -1,4 +1,4 @@
-﻿namespace StorageAccounting.DAL.Models.Item;
+﻿namespace StorageAccounting.Domain.Models.Item;
 
 public class Position
 {

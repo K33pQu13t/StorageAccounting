@@ -1,6 +1,6 @@
-﻿using StorageAccounting.DAL.Models.Common;
+﻿using StorageAccounting.Domain.Models.Common;
 
-namespace StorageAccounting.DAL.Models.Item;
+namespace StorageAccounting.Domain.Models.Item;
 
 public class Document
 {

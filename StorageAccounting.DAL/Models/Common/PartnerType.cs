@@ -1,4 +1,4 @@
-﻿namespace StorageAccounting.DAL.Models.Common;
+﻿namespace StorageAccounting.Domain.Models.Common;
 public class PartnerType
 {
     public short Id { get; set; }

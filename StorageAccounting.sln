@@ -5,9 +5,9 @@ VisualStudioVersion = 17.9.34902.65
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageAccounting.Web", "StorageAccounting\StorageAccounting.Web.csproj", "{4E764192-B76D-4460-8D2C-4A9A73AF3D64}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageAccounting.DAL", "StorageAccounting.DAL\StorageAccounting.DAL.csproj", "{00EE6CAC-5C7D-4224-B7B1-4A45F353F882}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageAccounting.Domain", "StorageAccounting.DAL\StorageAccounting.Domain.csproj", "{00EE6CAC-5C7D-4224-B7B1-4A45F353F882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageAccounting.Application", "StorageAccounting.Application\StorageAccounting.Application.csproj", "{94D73BF0-49AF-4178-A16E-15F4946AB2FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageAccounting.Application", "StorageAccounting.Application\StorageAccounting.Application.csproj", "{94D73BF0-49AF-4178-A16E-15F4946AB2FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

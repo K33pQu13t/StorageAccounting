@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace StorageAccounting.DAL.Configurations.Item;
+namespace StorageAccounting.Domain.Configurations.Item;
 
 internal class ItemConfiguration : IEntityTypeConfiguration<Models.Item.Item>
 {

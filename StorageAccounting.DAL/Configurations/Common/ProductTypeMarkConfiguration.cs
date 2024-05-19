@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using StorageAccounting.DAL.Models.Common;
+using StorageAccounting.Domain.Models.Common;
 
-namespace StorageAccounting.DAL.Configurations.Common;
+namespace StorageAccounting.Domain.Configurations.Common;
 internal class ProductTypeMarkConfiguration : IEntityTypeConfiguration<ProductTypeMark>
 {
     public void Configure(EntityTypeBuilder<ProductTypeMark> builder)

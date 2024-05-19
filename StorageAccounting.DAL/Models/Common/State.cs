@@ -1,6 +1,6 @@
-﻿using StorageAccounting.DAL.Models.Item;
+﻿using StorageAccounting.Domain.Models.Item;
 
-namespace StorageAccounting.DAL.Models.Common;
+namespace StorageAccounting.Domain.Models.Common;
 
 public class State
 {

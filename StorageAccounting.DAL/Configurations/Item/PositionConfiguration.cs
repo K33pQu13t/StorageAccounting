@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using StorageAccounting.DAL.Models.Item;
+using StorageAccounting.Domain.Models.Item;
 
-namespace StorageAccounting.DAL.Configurations.Item;
+namespace StorageAccounting.Domain.Configurations.Item;
 internal class PositionConfiguration : IEntityTypeConfiguration<Position>
 {
     public void Configure(EntityTypeBuilder<Position> builder)
