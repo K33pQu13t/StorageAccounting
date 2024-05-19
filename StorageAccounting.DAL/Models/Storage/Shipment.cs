@@ -4,7 +4,7 @@ using StorageAccounting.Domain.Models.Item;
 namespace StorageAccounting.Domain.Models.Storage;
 
 /// <summary>
-/// Документ отгрузки вне
+/// Документ отгрузки наружу
 /// </summary>
 public class Shipment
 {

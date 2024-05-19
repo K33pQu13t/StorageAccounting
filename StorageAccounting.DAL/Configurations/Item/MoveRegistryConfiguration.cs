@@ -7,6 +7,13 @@ internal class MoveRegistryConfiguration : IEntityTypeConfiguration<MoveRegistry
 {
     public void Configure(EntityTypeBuilder<MoveRegistry> builder)
     {
+        builder
+            .ToTable(schema: "ITEM", name: "MOVE_REGISTRY")
+            .ToTable(t =>
+            {
+                t.HasComment("Реестр учётных единиц");
+            });
+
         builder.HasKey(x => x.Id);
     }
 }

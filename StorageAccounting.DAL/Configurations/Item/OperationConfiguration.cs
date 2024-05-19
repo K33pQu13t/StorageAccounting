@@ -7,7 +7,20 @@ internal class OperationConfiguration : IEntityTypeConfiguration<Operation>
 {
     public void Configure(EntityTypeBuilder<Operation> builder)
     {
+        builder
+            .ToTable(schema: "ITEM", name: "OPERATION")
+            .ToTable(t =>
+            {
+                t.HasComment("Операция");
+            });
+
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.OperationTypeId).HasColumnName("ID_OPERTYPE");
+
+        builder.Property(x => x.DocumentId).HasColumnName("ID_DOCUMENT");
+
+        builder.Property(x => x.StateId).HasColumnName("ID_STATE");
 
         builder
             .HasOne(x => x.OperationType)

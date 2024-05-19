@@ -7,6 +7,13 @@ internal class StateConfiguration : IEntityTypeConfiguration<State>
 {
     public void Configure(EntityTypeBuilder<State> builder)
     {
+        builder
+            .ToTable(schema: "COMMON", name: "STATE")
+            .ToTable(t =>
+            {
+                t.HasComment("Состояние");
+            });
+
         builder.HasKey(x => x.Id);
 
         builder

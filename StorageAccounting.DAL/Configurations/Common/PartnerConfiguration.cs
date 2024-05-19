@@ -7,7 +7,16 @@ internal class PartnerConfiguration : IEntityTypeConfiguration<Partner>
 {
     public void Configure(EntityTypeBuilder<Partner> builder)
     {
+        builder
+            .ToTable(schema: "COMMON", name: "PARTNER")
+            .ToTable(t =>
+            {
+                t.HasComment("Партнёр");
+            });
+
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.PartnerTypeId).HasColumnName("ID_PARTNERTYPE");
 
         builder
             .HasOne(x => x.PartnerType)

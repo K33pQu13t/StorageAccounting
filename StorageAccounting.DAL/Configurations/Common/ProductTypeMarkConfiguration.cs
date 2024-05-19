@@ -7,7 +7,18 @@ internal class ProductTypeMarkConfiguration : IEntityTypeConfiguration<ProductTy
 {
     public void Configure(EntityTypeBuilder<ProductTypeMark> builder)
     {
+        builder
+            .ToTable(schema: "COMMON", name: "PRODUCTTYPE_MARK")
+            .ToTable(t =>
+            {
+                t.HasComment("Связь типа продукции с маркой");
+            });
+
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.ProductTypeId).HasColumnName("ID_PRODUCTTYPE");
+
+        builder.Property(x => x.MarkId).HasColumnName("ID_MARK");
 
         builder
             .HasOne(x => x.ProductType)

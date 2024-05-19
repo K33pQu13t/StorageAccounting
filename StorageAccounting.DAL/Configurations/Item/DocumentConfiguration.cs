@@ -8,7 +8,16 @@ internal class DocumentConfiguration : IEntityTypeConfiguration<Document>
 {
     public void Configure(EntityTypeBuilder<Document> builder)
     {
+        builder
+            .ToTable(schema: "ITEM", name: "DOCUMENT")
+            .ToTable(t =>
+            {
+                t.HasComment("Документ");
+            });
+
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.DocumentTypeId).HasColumnName("ID_DOCTYPE");
 
         builder
             .HasOne(x => x.DocumentType)

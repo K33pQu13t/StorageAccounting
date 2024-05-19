@@ -9,4 +9,6 @@ public class DocumentType
     public string Name { get; set; }
 
     public virtual ICollection<Document> Documents { get; }
+
+    public virtual ICollection<OperationDocumentType> OperationDocumentTypes { get; set; }
 }

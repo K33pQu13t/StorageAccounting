@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageAccounting.Domain", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StorageAccounting.Application", "StorageAccounting.Application\StorageAccounting.Application.csproj", "{94D73BF0-49AF-4178-A16E-15F4946AB2FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageAccounting.Contracts", "StorageAccounting.Contracts\StorageAccounting.Contracts.csproj", "{05B18BC1-FA5E-4E39-875F-13E5D018FD51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageAccounting.Common", "StorageAccounting.Common\StorageAccounting.Common.csproj", "{3B6B19C6-F5BF-401F-AA1A-8965D17993EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{94D73BF0-49AF-4178-A16E-15F4946AB2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94D73BF0-49AF-4178-A16E-15F4946AB2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94D73BF0-49AF-4178-A16E-15F4946AB2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05B18BC1-FA5E-4E39-875F-13E5D018FD51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05B18BC1-FA5E-4E39-875F-13E5D018FD51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05B18BC1-FA5E-4E39-875F-13E5D018FD51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05B18BC1-FA5E-4E39-875F-13E5D018FD51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6B19C6-F5BF-401F-AA1A-8965D17993EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B6B19C6-F5BF-401F-AA1A-8965D17993EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B6B19C6-F5BF-401F-AA1A-8965D17993EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B6B19C6-F5BF-401F-AA1A-8965D17993EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

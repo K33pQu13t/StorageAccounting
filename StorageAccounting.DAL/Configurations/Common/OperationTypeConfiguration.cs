@@ -7,6 +7,13 @@ internal class OperationTypeConfiguration : IEntityTypeConfiguration<OperationTy
 {
     public void Configure(EntityTypeBuilder<OperationType> builder)
     {
+        builder
+            .ToTable(schema: "COMMON", name: "OPERTYPE")
+            .ToTable(t =>
+            {
+                t.HasComment("Тип операции");
+            });
+
         builder.HasKey(x => x.Id);
 
         builder

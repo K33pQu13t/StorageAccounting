@@ -7,7 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ExcentOne.EntityFrameworkCore.Extensions.DependencyInjection" Version="7.0.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\StorageAccounting.Common\StorageAccounting.Common.csproj" />
+    <ProjectReference Include="..\StorageAccounting.DAL\StorageAccounting.Domain.csproj" />
   </ItemGroup>
 
 </Project>

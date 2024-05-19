@@ -1,4 +1,6 @@
-﻿namespace StorageAccounting.Domain.Models.Common;
+﻿using StorageAccounting.Domain.Models.Storage;
+
+namespace StorageAccounting.Domain.Models.Common;
 public class Partner
 {
     public int Id { get; set; }
@@ -8,4 +10,8 @@ public class Partner
     public string Name { get; set; }
 
     public virtual PartnerType PartnerType { get; set; }
+
+    public virtual ICollection<Arrival> Arrivals { get; set; }
+
+    public virtual ICollection<Shipment> Shipments { get; set; }
 }

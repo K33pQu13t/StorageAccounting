@@ -21,4 +21,6 @@ public class Operation
     public virtual State State { get; set; } = null!;
 
     public virtual ICollection<Move> Moves { get; set; }
+
+    public virtual ICollection<OperationDocumentType> OperationDocumentTypes { get; set; }
 }

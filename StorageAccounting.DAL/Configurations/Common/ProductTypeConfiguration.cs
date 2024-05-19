@@ -7,6 +7,13 @@ internal class ProductTypeConfiguration : IEntityTypeConfiguration<ProductType>
 {
     public void Configure(EntityTypeBuilder<ProductType> builder)
     {
+        builder
+            .ToTable(schema: "COMMON", name: "PRODUCTTYPE")
+            .ToTable(t =>
+            {
+                t.HasComment("Тип продукции");
+            });
+
         builder.HasKey(x => x.Id);
 
         builder

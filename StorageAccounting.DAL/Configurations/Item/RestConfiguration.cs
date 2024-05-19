@@ -7,7 +7,18 @@ internal class RestConfiguration : IEntityTypeConfiguration<Rest>
 {
     public void Configure(EntityTypeBuilder<Rest> builder)
     {
+        builder
+            .ToTable(schema: "ITEM", name: "REST")
+            .ToTable(t =>
+            {
+                t.HasComment("Остаток");
+            });
+
         builder.HasKey(x => x.Id);
+
+        builder.Property(x => x.PlaceId).HasColumnName("ID_PLACE");
+
+        builder.Property(x => x.ItemId).HasColumnName("ID_ITEM");
 
         builder
             .HasOne(x => x.Place)

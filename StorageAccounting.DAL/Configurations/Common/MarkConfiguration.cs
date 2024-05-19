@@ -7,10 +7,21 @@ internal class MarkConfiguration : IEntityTypeConfiguration<Mark>
 {
     public void Configure(EntityTypeBuilder<Mark> builder)
     {
+        builder
+            .ToTable(schema: "COMMON", name: "MARK")
+            .ToTable(t =>
+            {
+                t.HasComment("Марка");
+            });
+
         builder.HasKey(x => x.Id);
 
         builder
             .HasMany(x => x.ProductTypeMarks)
+            .WithOne(x => x.Mark);
+
+        builder
+            .HasMany(x => x.ArrivalRows)
             .WithOne(x => x.Mark);
     }
 }
