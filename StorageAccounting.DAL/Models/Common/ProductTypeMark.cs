@@ -1,11 +1,11 @@
 ﻿namespace StorageAccounting.Domain.Models.Common;
 public class ProductTypeMark
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public int ProductTypeId { get; set; }
+    public long ProductTypeId { get; set; }
     
-    public int MarkId {  get; set; }
+    public long MarkId {  get; set; }
 
     public virtual ProductType ProductType { get; set; }
 

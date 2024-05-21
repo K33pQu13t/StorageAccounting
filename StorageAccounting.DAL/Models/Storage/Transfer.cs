@@ -7,9 +7,9 @@ namespace StorageAccounting.Domain.Models.Storage;
 /// </summary>
 public class Transfer
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public double DocumentId {  get; set; }
+    public long DocumentId {  get; set; }
 
     public int PlaceFrom { get; set; }
 

@@ -15,9 +15,13 @@ internal class StateConfiguration : IEntityTypeConfiguration<State>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .HasIdentityOptions(startValue: 100)
+            .UseIdentityAlwaysColumn();
 
         builder
             .HasMany(x => x.Operations)
-            .WithOne(x => x.State);
+            .WithOne(x => x.State)
+            .HasForeignKey(x => x.StateId);
     }
 }

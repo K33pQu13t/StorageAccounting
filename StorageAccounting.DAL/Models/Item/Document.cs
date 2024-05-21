@@ -5,7 +5,7 @@ namespace StorageAccounting.Domain.Models.Item;
 
 public class Document
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
     public int DocumentTypeId { get; set; }
 

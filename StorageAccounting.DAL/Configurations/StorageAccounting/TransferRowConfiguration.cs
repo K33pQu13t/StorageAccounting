@@ -16,11 +16,14 @@ internal class TransferRowConfiguration : IEntityTypeConfiguration<TransferRow>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.PositionId).HasColumnName("ID_POSITION");
+        builder.Property(x => x.PositionId).HasColumnName("Id_Position");
 
         builder
             .HasOne(x => x.Position)
-            .WithMany(x => x.TransferRows);
+            .WithMany(x => x.TransferRows)
+            .HasForeignKey(x => x.PositionId);
     }
 }

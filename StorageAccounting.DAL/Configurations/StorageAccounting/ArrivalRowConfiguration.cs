@@ -16,17 +16,21 @@ internal class ArrivalRowConfiguration : IEntityTypeConfiguration<ArrivalRow>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.PositionId).HasColumnName("ID_POSITION");
+        builder.Property(x => x.PositionId).HasColumnName("Id_Position");
 
-        builder.Property(x => x.MarkId).HasColumnName("ID_MARK");
+        builder.Property(x => x.MarkId).HasColumnName("Id_Mark");
 
         builder
             .HasOne(x => x.Position)
-            .WithMany(x => x.ArrivalRows);
+            .WithMany(x => x.ArrivalRows)
+            .HasForeignKey(x => x.PositionId);
 
         builder
             .HasOne(x => x.Mark)
-            .WithMany(x => x.ArrivalRows);
+            .WithMany(x => x.ArrivalRows)
+            .HasForeignKey(x => x.MarkId);
     }
 }

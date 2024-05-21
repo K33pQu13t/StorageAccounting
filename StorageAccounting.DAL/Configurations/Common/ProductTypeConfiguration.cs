@@ -15,13 +15,18 @@ internal class ProductTypeConfiguration : IEntityTypeConfiguration<ProductType>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .HasIdentityOptions(startValue: 100)
+            .UseIdentityAlwaysColumn();
 
         builder
             .HasMany(x => x.ProductTypeMarks)
-            .WithOne(x => x.ProductType);
+            .WithOne(x => x.ProductType)
+            .HasForeignKey(x => x.ProductTypeId);
 
         builder
             .HasMany(x => x.Items)
-            .WithOne(x => x.ProductType);
+            .WithOne(x => x.ProductType)
+            .HasForeignKey(x => x.ProductTypeId);
     }
 }

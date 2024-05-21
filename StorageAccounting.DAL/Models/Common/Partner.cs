@@ -3,7 +3,7 @@
 namespace StorageAccounting.Domain.Models.Common;
 public class Partner
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 
     public short PartnerTypeId { get; set; }
 

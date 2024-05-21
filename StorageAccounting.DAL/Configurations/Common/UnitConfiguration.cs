@@ -16,9 +16,13 @@ internal class UnitConfiguration : IEntityTypeConfiguration<Unit>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .HasIdentityOptions(startValue: 100)
+            .UseIdentityAlwaysColumn();
 
         builder
             .HasMany(x => x.Items)
-            .WithOne(x => x.Unit);
+            .WithOne(x => x.Unit)
+            .HasForeignKey(x => x.UnitId);
     }
 }

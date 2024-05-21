@@ -15,17 +15,21 @@ internal class ProductTypeMarkConfiguration : IEntityTypeConfiguration<ProductTy
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.ProductTypeId).HasColumnName("ID_PRODUCTTYPE");
+        builder.Property(x => x.ProductTypeId).HasColumnName("Id_ProductType");
 
-        builder.Property(x => x.MarkId).HasColumnName("ID_MARK");
+        builder.Property(x => x.MarkId).HasColumnName("Id_Mark");
 
         builder
             .HasOne(x => x.ProductType)
-            .WithMany(x => x.ProductTypeMarks);
+            .WithMany(x => x.ProductTypeMarks)
+            .HasForeignKey(x => x.ProductTypeId);
 
         builder
             .HasOne(x => x.Mark)
-            .WithMany(x => x.ProductTypeMarks);
+            .WithMany(x => x.ProductTypeMarks)
+            .HasForeignKey(x => x.MarkId);
     }
 }

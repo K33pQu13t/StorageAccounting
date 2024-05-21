@@ -15,20 +15,25 @@ internal class PositionConfiguration : IEntityTypeConfiguration<Position>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.DocumentId).HasColumnName("ID_DOCUMENT");
+        builder.Property(x => x.DocumentId).HasColumnName("Id_Document");
 
-        builder.Property(x => x.ItemId).HasColumnName("ID_ITEM");
+        builder.Property(x => x.ItemId).HasColumnName("Id_Item");
 
         builder
             .HasOne(x => x.Document)
-            .WithMany(x => x.Positions);
+            .WithMany(x => x.Positions)
+            .HasForeignKey(x => x.DocumentId);
         builder
             .HasOne(x => x.Item)
-            .WithMany(x => x.Positions);
+            .WithMany(x => x.Positions)
+            .HasForeignKey(x => x.ItemId);
 
         builder
             .HasMany(x => x.Moves)
-            .WithOne(x => x.Position);
+            .WithOne(x => x.Position)
+            .HasForeignKey(x => x.PositionId);
     }
 }

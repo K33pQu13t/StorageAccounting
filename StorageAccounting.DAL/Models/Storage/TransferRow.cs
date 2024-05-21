@@ -7,14 +7,14 @@ namespace StorageAccounting.Domain.Models.Storage;
 /// </summary>
 public class TransferRow
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
     /// <summary>
     /// Количество, которое перемещают
     /// </summary>
     public decimal Amount { get; set; }
 
-    public double PositionId { get; set; }
+    public long PositionId { get; set; }
 
     public virtual Position Position { get; set; }
 }

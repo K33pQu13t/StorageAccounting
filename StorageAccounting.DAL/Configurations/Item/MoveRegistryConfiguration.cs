@@ -15,5 +15,7 @@ internal class MoveRegistryConfiguration : IEntityTypeConfiguration<MoveRegistry
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
     }
 }

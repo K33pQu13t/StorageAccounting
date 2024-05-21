@@ -1,4 +1,4 @@
-﻿namespace StorageAccounting.Contracts.Filters;
+﻿namespace StorageAccounting.Contracts.Filters.Arrival;
 public class ArrivalFilter
 {
     public DateTime DateBeg { get; set; }

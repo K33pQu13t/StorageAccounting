@@ -15,17 +15,21 @@ internal class MoveConfiguration : IEntityTypeConfiguration<Move>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.PositionId).HasColumnName("ID_POSITION");
+        builder.Property(x => x.PositionId).HasColumnName("Id_Position");
 
-        builder.Property(x => x.OperationId).HasColumnName("ID_OPERATION");
+        builder.Property(x => x.OperationId).HasColumnName("Id_Operation");
 
         builder
             .HasOne(x => x.Position)
-            .WithMany(x => x.Moves);
+            .WithMany(x => x.Moves)
+            .HasForeignKey(x => x.PositionId);
 
         builder
             .HasOne(x => x.Operation)
-            .WithMany(x => x.Moves);
+            .WithMany(x => x.Moves)
+            .HasForeignKey(x => x.OperationId);
     }
 }

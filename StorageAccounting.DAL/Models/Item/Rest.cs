@@ -4,11 +4,11 @@ namespace StorageAccounting.Domain.Models.Item;
 
 public class Rest
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
     public int PlaceId { get; set; }
 
-    public int ItemId { get; set; }
+    public long ItemId { get; set; }
 
     public DateTime DateCreate { get; set; }
 

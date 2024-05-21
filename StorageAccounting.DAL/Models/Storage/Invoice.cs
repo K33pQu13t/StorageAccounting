@@ -7,9 +7,9 @@ namespace StorageAccounting.Domain.Models.Storage;
 /// </summary>
 public class Invoice
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public double DocumentId { get; set; }
+    public long DocumentId { get; set; }
 
     public string Note { get; set; }
 

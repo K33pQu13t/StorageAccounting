@@ -4,7 +4,7 @@ using StorageAccounting.Domain.Models.Common;
 
 namespace StorageAccounting.Domain.Configurations.Common;
 
-public class OperationDocumentTypeConfiguration : IEntityTypeConfiguration<OperationDocumentType>
+internal class OperationDocumentTypeConfiguration : IEntityTypeConfiguration<OperationDocumentType>
 {
     public void Configure(EntityTypeBuilder<OperationDocumentType> builder)
     {
@@ -16,16 +16,22 @@ public class OperationDocumentTypeConfiguration : IEntityTypeConfiguration<Opera
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.OperationId).HasColumnName("ID_OPER");
-        builder.Property(x => x.DocumentTypeId).HasColumnName("ID_DOCTYPE");
+        builder.Property(x => x.OperationTypeId).HasColumnName("Id_OperType");
+        builder.Property(x => x.DocumentTypeId).HasColumnName("Id_DocType");
 
         builder
-            .HasOne(x => x.Operation)
-            .WithMany(x => x.OperationDocumentTypes);
+            .HasOne(x => x.OperationType)
+            .WithMany(x => x.OperationDocumentTypes)
+            .HasForeignKey(x => x.OperationTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder
             .HasOne(x => x.DocumentType)
-            .WithMany(x => x.OperationDocumentTypes);
+            .WithMany(x => x.OperationDocumentTypes)
+            .HasForeignKey(x => x.DocumentTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

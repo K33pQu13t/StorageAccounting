@@ -3,9 +3,11 @@
 namespace StorageAccounting.Domain.Models.Common;
 public class OperationType
 {
-    public short Id { get; set; }
+    public int Id { get; set; }
 
-    public short Name { get; set; }
+    public string Name { get; set; }
+
+    public virtual ICollection<OperationDocumentType> OperationDocumentTypes { get; set; }
 
     public virtual ICollection<Operation> Operations { get; set; }
 }

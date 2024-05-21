@@ -16,11 +16,14 @@ internal class ShipmentRowConfiguration : IEntityTypeConfiguration<ShipmentRow>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.PositionId).HasColumnName("ID_POSITION");
+        builder.Property(x => x.PositionId).HasColumnName("Id_Position");
 
         builder
             .HasOne(x => x.Position)
-            .WithMany(x => x.ShipmentRows);
+            .WithMany(x => x.ShipmentRows)
+            .HasForeignKey(x => x.PositionId);
     }
 }

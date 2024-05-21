@@ -8,11 +8,11 @@ namespace StorageAccounting.Domain.Models.Storage;
 /// </summary>
 public class Shipment
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public double DocumentId { get; set; }
+    public long DocumentId { get; set; }
 
-    public double PartnerId { get; set; }
+    public long PartnerId { get; set; }
 
     public string Note { get; set; }
 

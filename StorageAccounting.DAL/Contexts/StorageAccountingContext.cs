@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using StorageAccounting.Common.Configurations;
+using StorageAccounting.Contracts.Enums.Common;
 using StorageAccounting.Domain.Configurations.Common;
 using StorageAccounting.Domain.Configurations.Item;
 using StorageAccounting.Domain.Configurations.StorageAccounting;
@@ -25,7 +26,7 @@ public class StorageAccountingContext : DbContext
 
     public virtual DbSet<PartnerType> PartnerTypes { get; set; }
 
-    public virtual DbSet<Place> Place { get; set; }
+    public virtual DbSet<Place> Places { get; set; }
 
     public virtual DbSet<PlaceType> PlaceTypes { get; set; }
 
@@ -99,6 +100,7 @@ public class StorageAccountingContext : DbContext
         modelBuilder.ApplyConfiguration(new DocumentTypeConfiguration());
         modelBuilder.ApplyConfiguration(new MarkConfiguration());
         modelBuilder.ApplyConfiguration(new OperationTypeConfiguration());
+        modelBuilder.ApplyConfiguration(new OperationDocumentTypeConfiguration());
         modelBuilder.ApplyConfiguration(new PartnerConfiguration());
         modelBuilder.ApplyConfiguration(new PartnerTypeConfiguration());
         modelBuilder.ApplyConfiguration(new PlaceConfiguration());
@@ -126,5 +128,75 @@ public class StorageAccountingContext : DbContext
         modelBuilder.ApplyConfiguration(new ShipmentRowConfiguration());
         modelBuilder.ApplyConfiguration(new TransferConfiguration());
         modelBuilder.ApplyConfiguration(new TransferRowConfiguration());
+
+        Seeding(modelBuilder);
+    }
+
+    private static void Seeding(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<DocumentType>().HasData(
+            new DocumentType() { Id = (int)DocTypes.Arrival, Name = "Документ Поступления" });
+
+        modelBuilder.Entity<PlaceType>().HasData(
+            new PlaceType() { Id = (int)Common.Enums.Common.PlaceTypes.RawMaterials, Name = "Склад сырья" },
+            new PlaceType() { Id = (int)Common.Enums.Common.PlaceTypes.ReadyProducts, Name = "Склад готовой продукции" });
+
+        modelBuilder.Entity<Place>().HasData(
+            new Place() { Id = 1, Name = "Склад сырья №1", PlaceTypeId = (int)Common.Enums.Common.PlaceTypes.RawMaterials },
+            new Place() { Id = 2, Name = "Склад сырья №2", PlaceTypeId = (int)Common.Enums.Common.PlaceTypes.RawMaterials },
+            new Place() { Id = 3, Name = "СГП №1", PlaceTypeId = (int)Common.Enums.Common.PlaceTypes.ReadyProducts },
+            new Place() { Id = 4, Name = "СГП №2", PlaceTypeId = (int)Common.Enums.Common.PlaceTypes.ReadyProducts });
+
+        modelBuilder.Entity<PartnerType>().HasData(
+            new PartnerType() { Id = (int)Common.Enums.Common.PartnerTypes.MaterialManufacturer, Name = "Изготовитель сырья" },
+            new PartnerType() { Id = (int)Common.Enums.Common.PartnerTypes.Reciever, Name = "Потребитель" });
+
+        modelBuilder.Entity<Partner>().HasData(
+            new Partner() { Id = 1, Name = "ПАО РУСАЛ", PartnerTypeId = (int)Common.Enums.Common.PartnerTypes.MaterialManufacturer },
+            new Partner() { Id = 2, Name = "ОАО КРАСЦВЕТМЕТ", PartnerTypeId = (int)Common.Enums.Common.PartnerTypes.MaterialManufacturer },
+            new Partner() { Id = 3, Name = "ООО СИБТЯЖМАШ", PartnerTypeId = (int)Common.Enums.Common.PartnerTypes.Reciever },
+            new Partner() { Id = 4, Name = "АО АВТОВАЗ", PartnerTypeId = (int)Common.Enums.Common.PartnerTypes.Reciever });
+
+        modelBuilder.Entity<ProductType>().HasData(
+            new ProductType() { Id = (int)Common.Enums.Common.ProductTypes.Peat, Name = "Торф", NameShort = "Торф" },
+            new ProductType() { Id = (int)Common.Enums.Common.ProductTypes.Carbon, Name = "Уголь", NameShort = "Уголь" },
+            new ProductType() { Id = (int)Common.Enums.Common.ProductTypes.Alumina, Name = "Глинозём", NameShort = "Глинозём" });
+
+        modelBuilder.Entity<Mark>().HasData(
+            new Mark() { Id = (int)Common.Enums.Common.Marks.T10, Name = "T10" },
+            new Mark() { Id = (int)Common.Enums.Common.Marks.T20, Name = "T20" },
+            new Mark() { Id = (int)Common.Enums.Common.Marks.Carbon3000, Name = "Carbon3000" },
+            new Mark() { Id = (int)Common.Enums.Common.Marks.Al90, Name = "AL-90" },
+            new Mark() { Id = (int)Common.Enums.Common.Marks.Al92, Name = "AL-92" });
+
+        modelBuilder.Entity<ProductTypeMark>().HasData(
+            new ProductTypeMark() { Id = 1, ProductTypeId = (int)Common.Enums.Common.ProductTypes.Peat, MarkId = (int)Common.Enums.Common.Marks.T10 },
+            new ProductTypeMark() { Id = 2, ProductTypeId = (int)Common.Enums.Common.ProductTypes.Peat, MarkId = (int)Common.Enums.Common.Marks.T20 },
+            new ProductTypeMark() { Id = 3, ProductTypeId = (int)Common.Enums.Common.ProductTypes.Carbon, MarkId = (int)Common.Enums.Common.Marks.Carbon3000 },
+            new ProductTypeMark() { Id = 4, ProductTypeId = (int)Common.Enums.Common.ProductTypes.Alumina, MarkId = (int)Common.Enums.Common.Marks.Al90 },
+            new ProductTypeMark() { Id = 5, ProductTypeId = (int)Common.Enums.Common.ProductTypes.Alumina, MarkId = (int)Common.Enums.Common.Marks.Al92 });
+
+        modelBuilder.Entity<Unit>().HasData(
+            new Unit() { Id = (int)Common.Enums.Common.Units.Piece, Name = "штук", ShortName = "шт." },
+            new Unit() { Id = (int)Common.Enums.Common.Units.Kg, Name = "килограмм", ShortName = "кг." });
+
+        modelBuilder.Entity<State>().HasData(
+            new State() { Id = (int)Common.Enums.Common.States.New, Name = "Новый" },
+            new State() { Id = (int)Common.Enums.Common.States.Accepted, Name = "Подтверждён" },
+            new State() { Id = (int)Common.Enums.Common.States.Rejected, Name = "Отклонён" });
+
+        modelBuilder.Entity<OperationType>().HasData(
+            new OperationType() { Id = (int)Common.Enums.Common.OperationTypes.ArrivalCreate, Name = "Создание документа Поступления"},
+            new OperationType() { Id = (int)Common.Enums.Common.OperationTypes.ArrivalUpdate, Name = "Обновление документа Поступления"},
+            new OperationType() { Id = (int)Common.Enums.Common.OperationTypes.ArrivalAccept, Name = "Подтверждение документа Поступления"},
+            new OperationType() { Id = (int)Common.Enums.Common.OperationTypes.ArrivalReject, Name = "Отклонение документа Поступления"});
+
+        modelBuilder.Entity<OperationDocumentType>().HasData(
+            new OperationDocumentType() { Id = 1, DocumentTypeId = (int)DocTypes.Arrival, OperationTypeId = (int)Common.Enums.Common.OperationTypes.ArrivalCreate },
+            new OperationDocumentType() { Id = 2, DocumentTypeId = (int)DocTypes.Arrival, OperationTypeId = (int)Common.Enums.Common.OperationTypes.ArrivalUpdate },
+            new OperationDocumentType() { Id = 3, DocumentTypeId = (int)DocTypes.Arrival, OperationTypeId = (int)Common.Enums.Common.OperationTypes.ArrivalAccept },
+            new OperationDocumentType() { Id = 4, DocumentTypeId = (int)DocTypes.Arrival, OperationTypeId = (int)Common.Enums.Common.OperationTypes.ArrivalReject });
+
+        modelBuilder.Entity<MoveRegistry>().HasData(new MoveRegistry() { Id = 1, DateFact = DateTime.Now });
     }
 }

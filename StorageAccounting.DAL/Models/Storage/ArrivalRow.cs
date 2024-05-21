@@ -8,13 +8,13 @@ namespace StorageAccounting.Domain.Models.Storage;
 /// </summary>
 public class ArrivalRow
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public double PositionId { get; set; }
+    public long PositionId { get; set; }
 
-    public double MarkId { get; set; }
+    public long MarkId { get; set; }
 
-    public string Comment { get; set; }
+    public string Comment { get; set; } = null!;
 
     public virtual Position Position { get; set; }
 

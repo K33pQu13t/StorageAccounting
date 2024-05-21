@@ -16,19 +16,24 @@ internal class DocumentConfiguration : IEntityTypeConfiguration<Document>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityColumn();
 
-        builder.Property(x => x.DocumentTypeId).HasColumnName("ID_DOCTYPE");
+        builder.Property(x => x.DocumentTypeId).HasColumnName("Id_DocType");
 
         builder
             .HasOne(x => x.DocumentType)
-            .WithMany(x => x.Documents);
+            .WithMany(x => x.Documents)
+            .HasForeignKey(x => x.DocumentTypeId);
 
         builder
             .HasMany(x => x.Positions)
-            .WithOne(x => x.Document);
+            .WithOne(x => x.Document)
+            .HasForeignKey(x => x.DocumentId);
 
         builder
             .HasMany(x => x.Operations)
-            .WithOne(x => x.Document);
+            .WithOne(x => x.Document)
+            .HasForeignKey(x => x.DocumentId);
     }
 }

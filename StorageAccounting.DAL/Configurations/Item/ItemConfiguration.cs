@@ -15,23 +15,28 @@ internal class ItemConfiguration : IEntityTypeConfiguration<Models.Item.Item>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.ProductTypeId).HasColumnName("ID_PRODUCTTYPE");
+        builder.Property(x => x.ProductTypeId).HasColumnName("Id_ProductType");
 
-        builder.Property(x => x.UnitId).HasColumnName("ID_UNIT");
+        builder.Property(x => x.UnitId).HasColumnName("Id_Unit");
 
-        builder.Property(x => x.PlaceId).HasColumnName("ID_PLACE");
+        builder.Property(x => x.PlaceId).HasColumnName("Id_Place");
 
         builder
             .HasOne(x => x.ProductType)
-            .WithMany(x => x.Items);
+            .WithMany(x => x.Items)
+            .HasForeignKey(x => x.ProductTypeId);
 
         builder
             .HasOne(x => x.Unit)
-            .WithMany(x => x.Items);
+            .WithMany(x => x.Items)
+            .HasForeignKey(x => x.UnitId);
 
         builder
             .HasOne(x => x.Place)
-            .WithMany(x => x.Items);
+            .WithMany(x => x.Items)
+            .HasForeignKey(x => x.PlaceId);
     }
 }

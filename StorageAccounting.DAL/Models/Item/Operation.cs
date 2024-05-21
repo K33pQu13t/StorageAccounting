@@ -4,11 +4,11 @@ namespace StorageAccounting.Domain.Models.Item;
 
 public class Operation
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public short OperationTypeId { get; set; }
+    public int OperationTypeId { get; set; }
 
-    public double DocumentId { get; set; }
+    public long DocumentId { get; set; }
 
     public int StateId { get; set; }
 
@@ -21,6 +21,4 @@ public class Operation
     public virtual State State { get; set; } = null!;
 
     public virtual ICollection<Move> Moves { get; set; }
-
-    public virtual ICollection<OperationDocumentType> OperationDocumentTypes { get; set; }
 }

@@ -15,9 +15,20 @@ internal class DocumentTypeConfiguration : IEntityTypeConfiguration<DocumentType
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .HasIdentityOptions(startValue: 100)
+            .UseIdentityAlwaysColumn();
 
         builder
             .HasMany(x => x.Documents)
-            .WithOne(x => x.DocumentType);
+            .WithOne(x => x.DocumentType)
+            .HasForeignKey(x => x.DocumentTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder
+            .HasMany(x => x.OperationDocumentTypes)
+            .WithOne(x => x.DocumentType)
+            .HasForeignKey(x => x.DocumentTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

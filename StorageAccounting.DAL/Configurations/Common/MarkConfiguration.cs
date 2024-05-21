@@ -15,13 +15,18 @@ internal class MarkConfiguration : IEntityTypeConfiguration<Mark>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .HasIdentityOptions(startValue: 100)
+            .UseIdentityAlwaysColumn();
 
         builder
             .HasMany(x => x.ProductTypeMarks)
-            .WithOne(x => x.Mark);
+            .WithOne(x => x.Mark)
+            .HasForeignKey(x => x.MarkId);
 
         builder
             .HasMany(x => x.ArrivalRows)
-            .WithOne(x => x.Mark);
+            .WithOne(x => x.Mark)
+            .HasForeignKey(x => x.MarkId);
     }
 }

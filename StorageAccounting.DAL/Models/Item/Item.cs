@@ -4,9 +4,9 @@ namespace StorageAccounting.Domain.Models.Item;
 
 public class Item
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public int ProductTypeId { get; set; }
+    public long ProductTypeId { get; set; }
 
     public int UnitId { get; set; }
 

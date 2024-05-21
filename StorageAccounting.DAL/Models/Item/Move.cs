@@ -2,11 +2,11 @@
 
 public class Move
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public double PositionId { get; set; }
+    public long PositionId { get; set; }
 
-    public double OperationId { get; set; }
+    public long OperationId { get; set; }
 
     public DateTime DateCreate { get; set; }
 

@@ -20,6 +20,8 @@ builder.Services.AddScoped<IArrivalService, ArrivalService>();
 
 builder.Services.AddAutoMapper(typeof(ApplicationProfile));
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

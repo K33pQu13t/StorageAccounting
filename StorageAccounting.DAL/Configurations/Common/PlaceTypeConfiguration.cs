@@ -15,9 +15,13 @@ internal class PlaceTypeConfiguration : IEntityTypeConfiguration<PlaceType>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .HasIdentityOptions(startValue: 100)
+            .UseIdentityAlwaysColumn();
 
         builder
             .HasMany(x => x.Places)
-            .WithOne(x => x.PlaceType);
+            .WithOne(x => x.PlaceType)
+            .HasForeignKey(x => x.PlaceTypeId);
     }
 }

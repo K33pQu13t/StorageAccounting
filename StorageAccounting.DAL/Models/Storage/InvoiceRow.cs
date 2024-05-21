@@ -3,9 +3,9 @@
 namespace StorageAccounting.Domain.Models.Storage;
 public class InvoiceRow
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public double PositionId { get; set; }
+    public long PositionId { get; set; }
 
     public decimal Count { get; set; }
 

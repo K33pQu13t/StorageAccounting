@@ -7,9 +7,9 @@ namespace StorageAccounting.Domain.Models.Storage;
 /// </summary>
 public class ShipmentRow
 {
-    public double Id { get; set; }
+    public long Id { get; set; }
 
-    public double PositionId { get; set; }
+    public long PositionId { get; set; }
 
     public string Name { get; set; }
 

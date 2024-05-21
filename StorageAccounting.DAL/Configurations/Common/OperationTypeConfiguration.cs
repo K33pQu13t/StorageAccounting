@@ -15,9 +15,20 @@ internal class OperationTypeConfiguration : IEntityTypeConfiguration<OperationTy
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .HasIdentityOptions(startValue: 100)
+            .UseIdentityAlwaysColumn();
 
         builder
             .HasMany(x => x.Operations)
-            .WithOne(x => x.OperationType);
+            .WithOne(x => x.OperationType)
+            .HasForeignKey(x => x.OperationTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        builder
+            .HasMany(x => x.OperationDocumentTypes)
+            .WithOne(x => x.OperationType)
+            .HasForeignKey(x => x.OperationTypeId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }

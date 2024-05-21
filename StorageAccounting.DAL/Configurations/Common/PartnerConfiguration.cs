@@ -15,11 +15,14 @@ internal class PartnerConfiguration : IEntityTypeConfiguration<Partner>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.PartnerTypeId).HasColumnName("ID_PARTNERTYPE");
+        builder.Property(x => x.PartnerTypeId).HasColumnName("Id_PartnerType");
 
         builder
             .HasOne(x => x.PartnerType)
-            .WithMany(x => x.Partners);
+            .WithMany(x => x.Partners)
+            .HasForeignKey(x => x.PartnerTypeId);
     }
 }

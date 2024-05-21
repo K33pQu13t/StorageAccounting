@@ -15,11 +15,14 @@ internal class InvoiceConfiguration : IEntityTypeConfiguration<Invoice>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.DocumentId).HasColumnName("ID_DOCUMENT");
+        builder.Property(x => x.DocumentId).HasColumnName("Id_Document");
 
         builder
             .HasOne(x => x.Document)
-            .WithMany(x => x.Invoices);
+            .WithMany(x => x.Invoices)
+            .HasForeignKey(x => x.DocumentId);
     }
 }

@@ -16,11 +16,14 @@ internal class TransferConfiguration : IEntityTypeConfiguration<Transfer>
             });
 
         builder.HasKey(x => x.Id);
+        builder.Property(x => x.Id)
+            .UseIdentityAlwaysColumn();
 
-        builder.Property(x => x.DocumentId).HasColumnName("ID_DOCUMENT");
+        builder.Property(x => x.DocumentId).HasColumnName("Id_Document");
 
         builder
             .HasOne(x => x.Document)
-            .WithMany(x => x.Transfers);
+            .WithMany(x => x.Transfers)
+            .HasForeignKey(x => x.DocumentId);
     }
 }
